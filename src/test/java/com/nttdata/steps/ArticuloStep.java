@@ -18,7 +18,7 @@ public class ArticuloStep {
         URL = url;
     };
 
-    public void consultaArtuculos(){
+    public void consultaArticulos(){
 
         response =
         given()

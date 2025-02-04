@@ -18,7 +18,7 @@ public class ArticuloStepDef {
 
     @When("hago la consulta de los articulos")
     public void hagoLaConsultaDeLosArticulos() {
-        articulo.consultaArtuculos();
+        articulo.consultaArticulos();
     }
 
     @Then("imprimo los articulos")
