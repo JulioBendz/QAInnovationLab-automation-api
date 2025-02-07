@@ -1,0 +1,35 @@
+package com.nttdata.stepsdefinitions;
+
+import com.nttdata.steps.CartSteps;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
+import io.cucumber.java.en.Then;
+
+public class CartStepDefinitions {
+
+    private final CartSteps cartSteps;
+
+    public CartStepDefinitions() {
+        this.cartSteps = new CartSteps();
+    }
+
+    @Given("estoy en la aplicación de SauceLabs")
+    public void estoyEnLaAplicacionDeSauceLabs() {
+        cartSteps.estoyEnLaAplicacionDeSauceLabs();
+    }
+
+    @Given("valido que carguen correctamente los productos en la galeria")
+    public void validoQueCarguenCorrectamenteLosProductosEnLaGaleria() {
+        cartSteps.validoQueCarguenCorrectamenteLosProductosEnLaGaleria();
+    }
+
+    @When("agrego {int} del siguiente producto {string}")
+    public void agregoDelSiguienteProducto(int unidades, String producto) {
+        cartSteps.agregoDelSiguienteProducto(unidades, producto);
+    }
+
+    @Then("valido el carrito de compra actualice correctamente")
+    public void validoElCarritoDeCompraActualiceCorrectamente() {
+        cartSteps.validoElCarritoDeCompraActualiceCorrectamente();
+    }
+}

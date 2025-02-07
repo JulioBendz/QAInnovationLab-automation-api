@@ -6,10 +6,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        plugin = {"pretty"},
+        plugin = {"pretty", "html:target/cucumber-reports.html", "json:target/cucumber.json"},
         features = "src/test/resources/features",
         glue = "com.nttdata.stepsdefinitions",
-        tags = "@login"
+        tags = "@ValidUpdate"
 )
 public class CucumberTestSuite {
 }
