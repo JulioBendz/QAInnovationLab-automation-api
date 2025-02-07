@@ -4,7 +4,6 @@ import com.nttdata.screens.CartScreen;
 import com.nttdata.screens.ProductDetailsScreen;
 import com.nttdata.screens.ProductScreen;
 import net.thucydides.core.annotations.Step;
-
 import static org.junit.Assert.assertTrue;
 
 public class CartSteps {
