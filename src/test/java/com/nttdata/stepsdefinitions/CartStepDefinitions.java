@@ -4,14 +4,12 @@ import com.nttdata.steps.CartSteps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
+import net.serenitybdd.annotations.Steps;
 
 public class CartStepDefinitions {
 
-    private final CartSteps cartSteps;
-
-    public CartStepDefinitions() {
-        this.cartSteps = new CartSteps();
-    }
+    @Steps
+    CartSteps cartSteps;
 
     @Given("estoy en la aplicación de SauceLabs")
     public void estoyEnLaAplicacionDeSauceLabs() {

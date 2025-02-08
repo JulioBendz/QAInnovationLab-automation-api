@@ -10,11 +10,6 @@ public class ProductScreen extends PageObject {
     @AndroidFindBy(id = "com.saucelabs.mydemoapp.android:id/productTV")
     private WebElement productsTitle;
 
-    public boolean isProductsTitleVisible() {
-        waitFor(ExpectedConditions.visibilityOf(productsTitle));
-        return productsTitle.isDisplayed();
-    }
-
     @AndroidFindBy(accessibility = "Sauce Labs Backpack")
     private WebElement backpackProduct;
 
@@ -24,9 +19,21 @@ public class ProductScreen extends PageObject {
     @AndroidFindBy(accessibility = "Sauce Labs Bike Light")
     private WebElement bikeLightProduct;
 
-    @AndroidFindBy(id = "com.saucelabs.mydemoapp.android:id/cartIV")
+    @AndroidFindBy(accessibility = "Displays number of items in your cart")
     private WebElement cartButton;
 
+    @AndroidFindBy(accessibility = "Shows current sorting order and displays available sorting options")
+    private WebElement sortingOrder;
+
+    public boolean isSortingOrderVisible() {
+        waitFor(ExpectedConditions.visibilityOf(sortingOrder));
+        return sortingOrder.isDisplayed();
+    }
+
+    public boolean isProductsTitleVisible() {
+        waitFor(ExpectedConditions.visibilityOf(productsTitle));
+        return productsTitle.isDisplayed(); //isEnabled();
+    }
     public void selectProduct(String productName) {
         switch (productName) {
             case "Sauce Labs Backpack":

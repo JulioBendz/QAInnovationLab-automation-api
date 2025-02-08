@@ -3,26 +3,20 @@ package com.nttdata.steps;
 import com.nttdata.screens.CartScreen;
 import com.nttdata.screens.ProductDetailsScreen;
 import com.nttdata.screens.ProductScreen;
-import static org.junit.Assert.assertTrue;
+import org.junit.Assert;
 
 public class CartSteps {
 
-    private final ProductScreen productScreen;
-    private final ProductDetailsScreen productDetailsScreen;
-    private final CartScreen cartScreen;
-
-    public CartSteps() {
-        this.productScreen = new ProductScreen();
-        this.productDetailsScreen = new ProductDetailsScreen();
-        this.cartScreen = new CartScreen();
-    }
+    ProductScreen productScreen;
+    ProductDetailsScreen productDetailsScreen;
+    CartScreen cartScreen;
 
     public void estoyEnLaAplicacionDeSauceLabs() {
-        assertTrue("La aplicación no se cargó correctamente", productScreen.isProductsTitleVisible());
+        Assert.assertTrue("La aplicación no se cargó correctamente", productScreen.isProductsTitleVisible());
     }
 
     public void validoQueCarguenCorrectamenteLosProductosEnLaGaleria() {
-        assertTrue("Los productos no se cargaron correctamente", productScreen.isProductsTitleVisible());
+        Assert.assertTrue("Los productos no se cargaron correctamente", productScreen.isSortingOrderVisible());
     }
 
     public void agregoDelSiguienteProducto(int unidades, String producto) {
@@ -37,7 +31,7 @@ public class CartSteps {
         productScreen.goToCart();
         String productName = cartScreen.getProductNameInCart();
         int quantity = cartScreen.getProductQuantityInCart();
-        assertTrue("El nombre del producto en el carrito no coincide", productName.contains("Sauce Labs"));
-        assertTrue("La cantidad del producto en el carrito no coincide", quantity >= 1);
+        Assert.assertTrue("El nombre del producto en el carrito no coincide", productName.contains("Sauce Labs"));
+        Assert.assertTrue("La cantidad del producto en el carrito no coincide", quantity >= 1);
     }
 }
