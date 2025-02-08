@@ -1,30 +1,26 @@
 package com.nttdata.screens;
 
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import org.openqa.selenium.support.PageFactory;
-import net.thucydides.core.annotations.Step;
+import net.serenitybdd.core.pages.PageObject;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static net.thucydides.core.webdriver.ThucydidesWebDriverSupport.getDriver;
+public class CartScreen extends PageObject {
 
-public class CartScreen {
-
-    public CartScreen() {
-        PageFactory.initElements(new AppiumFieldDecorator(getDriver()), this);
-    }
 
     @AndroidFindBy(accessibility = "Displays selected product")
-    private MobileElement productInCart;
+    private WebElement productInCart;
 
     @AndroidFindBy(id = "com.saucelabs.mydemoapp.android:id/quantityTV")
-    private MobileElement quantityInCart;
+    private WebElement quantityInCart;
 
     public String getProductNameInCart() {
+        waitFor(ExpectedConditions.visibilityOf(productInCart));
         return productInCart.getText();
     }
 
     public int getProductQuantityInCart() {
+        waitFor(ExpectedConditions.visibilityOf(quantityInCart));
         return Integer.parseInt(quantityInCart.getText());
     }
 }
