@@ -16,7 +16,7 @@ public class CartSteps {
     }
 
     public void validoQueCarguenCorrectamenteLosProductosEnLaGaleria() {
-        Assert.assertTrue("Los productos no se cargaron correctamente", productScreen.isSortingOrderVisible());
+        Assert.assertTrue("Los productos no se cargaron correctamente :(", productScreen.isSortingOrderVisible());
     }
 
     public void agregoDelSiguienteProducto(int unidades, String producto) {
