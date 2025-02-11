@@ -28,7 +28,7 @@ public class CartSteps {
     }
 
     public void validoElCarritoDeCompraActualiceCorrectamente() {
-        productScreen.goToCart();
+        productDetailsScreen.goToCart();
         String productName = cartScreen.getProductNameInCart();
         int quantity = cartScreen.getProductQuantityInCart();
         Assert.assertTrue("El nombre del producto en el carrito no coincide", productName.contains("Sauce Labs"));

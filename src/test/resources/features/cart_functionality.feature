@@ -1,4 +1,3 @@
-@ValidFuntions
 Feature: Validar la funcionalidad del carrito de compras
 
   @ValidUpdate

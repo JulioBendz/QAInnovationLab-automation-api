@@ -10,6 +10,9 @@ public class ProductScreen extends PageObject {
     @AndroidFindBy(id = "com.saucelabs.mydemoapp.android:id/productTV")
     private WebElement productsTitle;
 
+    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc=\"Container for fragments\"]/android.view.ViewGroup")
+    private WebElement sortingOrder;
+
     @AndroidFindBy(accessibility = "Sauce Labs Backpack")
     private WebElement backpackProduct;
 
@@ -19,21 +22,16 @@ public class ProductScreen extends PageObject {
     @AndroidFindBy(accessibility = "Sauce Labs Bike Light")
     private WebElement bikeLightProduct;
 
-    @AndroidFindBy(accessibility = "Displays number of items in your cart")
-    private WebElement cartButton;
-
-    @AndroidFindBy(accessibility = "Shows current sorting order and displays available sorting options")
-    private WebElement sortingOrder;
+    public boolean isProductsTitleVisible() {
+        waitFor(ExpectedConditions.visibilityOf(productsTitle));
+        return productsTitle.isDisplayed(); //isEnabled();
+    }
 
     public boolean isSortingOrderVisible() {
         waitFor(ExpectedConditions.visibilityOf(sortingOrder));
         return sortingOrder.isDisplayed();
     }
 
-    public boolean isProductsTitleVisible() {
-        waitFor(ExpectedConditions.visibilityOf(productsTitle));
-        return productsTitle.isDisplayed(); //isEnabled();
-    }
     public void selectProduct(String productName) {
         switch (productName) {
             case "Sauce Labs Backpack":
@@ -51,10 +49,5 @@ public class ProductScreen extends PageObject {
             default:
                 throw new IllegalArgumentException("Producto no encontrado: " + productName);
         }
-    }
-
-    public void goToCart() {
-        waitFor(ExpectedConditions.elementToBeClickable(cartButton));
-        cartButton.click();
     }
 }

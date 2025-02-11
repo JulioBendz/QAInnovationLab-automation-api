@@ -1,6 +1,7 @@
 package com.nttdata.stepsdefinitions;
 
 import com.nttdata.steps.CartSteps;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -16,7 +17,7 @@ public class CartStepDefinitions {
         cartSteps.estoyEnLaAplicacionDeSauceLabs();
     }
 
-    @Given("valido que carguen correctamente los productos en la galeria")
+    @And("valido que carguen correctamente los productos en la galeria")
     public void validoQueCarguenCorrectamenteLosProductosEnLaGaleria() {
         cartSteps.validoQueCarguenCorrectamenteLosProductosEnLaGaleria();
     }

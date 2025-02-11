@@ -9,9 +9,11 @@ public class CartScreen extends PageObject {
 
 
     @AndroidFindBy(accessibility = "Displays selected product")
+    //si no funciona probar con xpath de la letra del producto: com.saucelabs.mydemoapp.android:id/titleTV
     private WebElement productInCart;
 
     @AndroidFindBy(id = "com.saucelabs.mydemoapp.android:id/quantityTV")
+    //com.saucelabs.mydemoapp.android:id/noTV (si no funciona probar con noTV en lugar de quantityTV)
     private WebElement quantityInCart;
 
     public String getProductNameInCart() {

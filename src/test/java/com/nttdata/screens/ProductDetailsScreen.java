@@ -13,6 +13,9 @@ public class ProductDetailsScreen extends PageObject {
     @AndroidFindBy(accessibility = "Tap to add product to cart")
     private WebElement addToCartButton;
 
+    @AndroidFindBy(accessibility = "Displays number of items in your cart")
+    private WebElement cartButton;
+
     public void increaseQuantity(int units) {
         for (int i = 1; i < units; i++) {
             waitFor(ExpectedConditions.elementToBeClickable(increaseQuantityButton));
@@ -23,5 +26,10 @@ public class ProductDetailsScreen extends PageObject {
     public void addToCart() {
         waitFor(ExpectedConditions.elementToBeClickable(addToCartButton));
         addToCartButton.click();
+    }
+
+    public void goToCart() {
+        waitFor(ExpectedConditions.elementToBeClickable(cartButton));
+        cartButton.click();
     }
 }
