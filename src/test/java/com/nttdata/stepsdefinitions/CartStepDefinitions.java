@@ -27,8 +27,8 @@ public class CartStepDefinitions {
         cartSteps.agregoDelSiguienteProducto(unidades, producto);
     }
 
-    @Then("valido el carrito de compra actualice correctamente")
-    public void validoElCarritoDeCompraActualiceCorrectamente() {
-        cartSteps.validoElCarritoDeCompraActualiceCorrectamente();
+    @Then("valido el carrito de compra actualice correctamente con {int} unidades del producto {string}")
+    public void validoElCarritoDeCompraActualiceCorrectamente(int expectedQuantity, String expectedProduct) {
+        cartSteps.validoElCarritoDeCompraActualiceCorrectamente(expectedProduct, expectedQuantity);
     }
 }

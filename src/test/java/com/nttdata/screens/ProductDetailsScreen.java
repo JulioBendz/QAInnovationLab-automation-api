@@ -5,6 +5,8 @@ import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.time.Duration;
+
 public class ProductDetailsScreen extends PageObject {
 
     @AndroidFindBy(accessibility = "Increase item quantity")
@@ -18,18 +20,29 @@ public class ProductDetailsScreen extends PageObject {
 
     public void increaseQuantity(int units) {
         for (int i = 1; i < units; i++) {
-            waitFor(ExpectedConditions.elementToBeClickable(increaseQuantityButton));
+            withTimeoutOf(Duration.ofSeconds(15)).waitFor(ExpectedConditions.visibilityOf(increaseQuantityButton));
             increaseQuantityButton.click();
         }
     }
 
     public void addToCart() {
-        waitFor(ExpectedConditions.elementToBeClickable(addToCartButton));
+        withTimeoutOf(Duration.ofSeconds(15)).waitFor(ExpectedConditions.visibilityOf(addToCartButton));
         addToCartButton.click();
     }
 
     public void goToCart() {
-        waitFor(ExpectedConditions.elementToBeClickable(cartButton));
+        withTimeoutOf(Duration.ofSeconds(15)).waitFor(ExpectedConditions.visibilityOf(cartButton));
         cartButton.click();
     }
+
+    public boolean isProductDetailsVisible() {
+        try {
+            WebElement productTitle = findBy("//android.widget.TextView[@resource-id='com.saucelabs.mydemoapp.android:id/productTV']");
+            withTimeoutOf(Duration.ofSeconds(5)).waitFor(ExpectedConditions.visibilityOf(productTitle));
+            return productTitle.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 }

@@ -5,24 +5,26 @@ import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.time.Duration;
+
 public class CartScreen extends PageObject {
 
 
-    @AndroidFindBy(accessibility = "Displays selected product")
-    //si no funciona probar con xpath de la letra del producto: com.saucelabs.mydemoapp.android:id/titleTV
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.saucelabs.mydemoapp.android:id/titleTV\"]")
+    //si no funciona probar con id de la letra del producto: com.saucelabs.mydemoapp.android:id/titleTV
     private WebElement productInCart;
 
-    @AndroidFindBy(id = "com.saucelabs.mydemoapp.android:id/quantityTV")
-    //com.saucelabs.mydemoapp.android:id/noTV (si no funciona probar con noTV en lugar de quantityTV)
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"com.saucelabs.mydemoapp.android:id/noTV\"]")
+    //si no funciona con el xpath probar con el id: com.saucelabs.mydemoapp.android:id/noTV
     private WebElement quantityInCart;
 
     public String getProductNameInCart() {
-        waitFor(ExpectedConditions.visibilityOf(productInCart));
+        withTimeoutOf(Duration.ofSeconds(15)).waitFor(ExpectedConditions.visibilityOf(productInCart));
         return productInCart.getText();
     }
 
     public int getProductQuantityInCart() {
-        waitFor(ExpectedConditions.visibilityOf(quantityInCart));
+        withTimeoutOf(Duration.ofSeconds(15)).waitFor(ExpectedConditions.visibilityOf(quantityInCart));
         return Integer.parseInt(quantityInCart.getText());
     }
 }
